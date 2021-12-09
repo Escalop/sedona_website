@@ -132,8 +132,8 @@ dmypy.json
 .idea
 /dumps
 /data
-/public/media/*
-!/public/media/.gitkeep
-/public/static/*
-!/public/static/.gitkeep
+/frontend/public/media/*
+!/frontend/public/media/.gitkeep
+/frontend/public/static/*
+!/frontend/public/static/.gitkeep
 tmp
