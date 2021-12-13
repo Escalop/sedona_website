@@ -1,10 +1,10 @@
-from ..models.home_page import Reason
+from ..models.home_page import Reasons
 from django.contrib import admin
 
 
 
 class ReasonInline(admin.TabularInline):
-    model = Reason
+    model = Reasons
     fk_name = 'home_page'
-    fields = ('title', 'image', 'number', 'content', 'page', 'url')
+    fields = ('title', 'number','content', 'image')
     extra = 1

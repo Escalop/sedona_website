@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include 'include/breadcrumb.html' %}
+<main class="hotels-main width-container">
+      <h1 class="visually-hidden">Выбор гостиницы в Седоне</h1>
+      <section class="parameters-form">
+        <h2 class="visually-hidden">Фильтр параметров поиска</h2>
+        <form class="filter" method="get" action="#">
+          <fieldset class="filter-item">
+            <legend>Инфраструктура:</legend>
+              <ul>
+                <li class="filter-checkbox">
+                  <input class="visually-hidden filter-input-checkbox filter-input" type="checkbox" name="pool" id="filter-pool">
+                  <label for="filter-pool">Бассейн</label>
+                </li>
+                <li class="filter-checkbox">
+                  <input class="visually-hidden filter-input-checkbox filter-input" type="checkbox" name="parking" id="filter-parking">
+                  <label for="filter-parking">Парковка</label>
+                </li>
+                <li class="filter-checkbox">
+                  <input class="visually-hidden filter-input-checkbox filter-input" type="checkbox" name="wi-fi" id="filter-wi-fi">
+                  <label for="filter-wi-fi">wi-fi</label>
+                </li>
+              </ul>
+          </fieldset>
+          <fieldset class="filter-item">
+            <legend>Тип жилья:</legend>
+              <ul>
+                <li class="filter-checkbox">
+                  <input class="visually-hidden filter-input-checkbox filter-input" type="checkbox" name="hotel" id="hotel">
+                  <label for="hotel">Гостиница</label>
+                  </li>
+                <li class="filter-checkbox">
+                  <input class="visually-hidden filter-input-checkbox filter-input" type="checkbox" name="motel" id="filter-motel">
+                  <label for="filter-motel">Мотель</label>
+                </li>
+                <li class="filter-checkbox">
+                  <input class="visually-hidden filter-input-checkbox filter-input" type="checkbox" name="apartments" id="filter-apartments">
+                  <label for="filter-apartments">Апартаменты</label>
+                </li>
+              </ul>
+          </fieldset>
+          <fieldset class="filter-item">
+            <legend>Стоимость в сутки (р):</legend>
+              <div class="range-filter">
+                <div class="price-controls">
+                  <label class="min-price" aria-label="введите минимальное значение">
+                     <input type="text" name="min-price" placeholder="от 0">
+                  </label>
+                  <label class="max-price" aria-label="введите максимальное значение">
+                     <input type="text" name="max-price" placeholder="до 3000">
+                  </label>
+                </div>
+              </div>
+              <button type="submit" class="button filter-button">Показать</button>
+          </fieldset>
+        </form>
+      </section>
+</main>
+
+{% for obj in paginated_object_list %}
+    <div>
+        <p><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></p>
+    </div>
+    {% if obj.image %}
+    <img src="{{ obj.image.url}}">
+    {% endif %}
+<li>{{ obj.type }}</li>   <li>{{ obj.price }}</li>   <li>{{ obj.rating_rate }}</li>
+{% endfor %}
+
+{% include 'include/pagination.html' %}
+
+
+
+
+{% endblock %}

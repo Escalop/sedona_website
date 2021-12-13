@@ -1,0 +1,37 @@
+<form  method="post">
+    {% csrf_token %}
+     <div class="search-form">
+        <label for="check_in" class="date-input">ДАТА ЗАЕЗДА</label>
+        <div class="col-sm-6">
+            <input type="date" name="check_in" class="form-control" id="check_in">
+        </div>
+        <label for="check_out" class="date-input">ДАТА ВЫЕЗДА</label>
+        <div class="col-sm-6">
+            <input type="date" name="check_out" class="form-control" id="check_out">
+        </div>
+    </div>
+    <div class="row mb-1">
+        <label for="adults" class="input_number">взрослые:</label>
+        <div class="col-sm-3">
+            <input type='number' name="adults" class="form-control" id="adults">
+        </div>
+        <label for="kids" class="input_number">дети:</label>
+        <div class="col-sm-3">
+            <input type='number' name="kids" class="form-control" id="kids">
+        </div>
+    </div>
+    <button type="submit" class="button button-form-search">найти</button>
+</form>
+
+{% if message %}
+<div class="alert alert-success mt-3" role="alert">
+    {{ message }}
+</div>
+{% endif %}
+
+{% if form.errors %}
+    <div class="alert alert-danger mt-3" role="alert">
+        <div>При отправке возникли ошибки:</div>
+        <div>{{ form.errors }}</div>
+    </div>
+{% endif %}
